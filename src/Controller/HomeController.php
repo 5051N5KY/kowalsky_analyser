@@ -17,10 +17,17 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        $this->defaultStorage->write('default.txt', 'Test');
+        /*$this->defaultStorage->write('default.txt', 'Test');
         //dd($this->defaultStorage->listContents('', 100)->toArray());
         return $this->render('home/index.html.twig', [
             'controller_name' => $this->defaultStorage->read('default.txt'),
-        ]);
+        ]);*/
+        $items = [
+            ['column1' => 'Item 1', 'column2' => 'Value 1'],
+            ['column1' => 'Item 2', 'column2' => 'Value 2'],
+            // Dodaj więcej pozycji w miarę potrzeby
+        ];
+
+        return $this->render('home/index.html.twig', ['items' => $items]);
     }
 }
