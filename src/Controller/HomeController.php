@@ -11,7 +11,6 @@ class HomeController extends AbstractController
 {
     public function __construct(private FilesystemOperator $defaultStorage)
     {
-
     }
 
     #[Route('/', name: 'app_home')]

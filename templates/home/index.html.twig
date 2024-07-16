@@ -1,27 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-<table>
-    <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in items %}
-        <tr>
-            <td>{{ item.column1 }}</td>
-            <td>{{ item.column2 }}</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Column 1</th>
+				<th scope="col">Column 2</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+				<tr>
+					<td>{{ item.column1 }}</td>
+					<td>{{ item.column2 }}</td>
+					<td>
+						<button class="btn btn-primary">Edit</button>
+						<button class="btn btn-danger">Delete</button>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}
