@@ -153,9 +153,13 @@ footer {
 
 .table .object-thumbnail {
     max-width: 50px;
+    max-height: 50px;
     object-fit: cover;
 }
 
+.table .object-thumbnail:hover{
+    box-shadow: 0 0 15px rgba(85, 85, 85, 0.7);
+}
 .table .btn {
     margin-right: 5px;
 }

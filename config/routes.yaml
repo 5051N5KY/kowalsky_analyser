@@ -1,3 +1,8 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+delete_file:
+    path: /deleteFile
+    controller: App\Controller\HomeController::deleteFile
+    methods: POST
