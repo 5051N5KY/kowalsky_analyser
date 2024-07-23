@@ -9,24 +9,27 @@ use League\Flysystem\FilesystemOperator;
 
 class HomeController extends AbstractController
 {
-    public function __construct(private FilesystemOperator $defaultStorage)
+    public function __construct(private FilesystemOperator $mainStorage)
     {
     }
 
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        /*$this->defaultStorage->write('default.txt', 'Test');
-        //dd($this->defaultStorage->listContents('', 100)->toArray());
-        return $this->render('home/index.html.twig', [
-            'controller_name' => $this->defaultStorage->read('default.txt'),
-        ]);*/
-        $items = [
-            ['column1' => 'Item 1', 'column2' => 'Value 1'],
-            ['column1' => 'Item 2', 'column2' => 'Value 2'],
-            // Dodaj więcej pozycji w miarę potrzeby
-        ];
+        $objects = $this->getPhotos();
+   
+        return $this->render('home/index.html.twig', ['items' => $objects]);
+    }
 
-        return $this->render('home/index.html.twig', ['items' => $items]);
+    public function getPhotos(): array
+    {
+        $files = $this->mainStorage->listContents('objects/', 'files')->toArray();
+        $paths = [];
+        $storagePath = 'storage/';
+        foreach ($files as $file) {
+            $paths[] = $storagePath.$file['path'];
+        }
+        
+        return $paths;
     }
 }

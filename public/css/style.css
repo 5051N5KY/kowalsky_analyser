@@ -50,3 +50,9 @@ td {
 button {
     margin-right: 5px;
 }
+
+.object-thumbnail {
+    max-width: 100px;  /* Maksymalna szerokość obrazka */
+    max-height: 100px; /* Maksymalna wysokość obrazka */
+    object-fit: cover; /* Zachowuje proporcje obrazu */
+}

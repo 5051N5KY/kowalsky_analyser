@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}Analyser
 {% endblock %}
 
 {% block body %}
 	<table class="table">
 		<thead class="thead-light">
 			<tr>
-				<th scope="col">Column 1</th>
-				<th scope="col">Column 2</th>
-				<th scope="col">Actions</th>
+				<th scope="col">Obiekt</th>
+				<th scope="col">Akcja</th>
 			</tr>
 		</thead>
 		<tbody>
+			<pre>
+		</pre>
 			{% for item in items %}
 				<tr>
-					<td>{{ item.column1 }}</td>
-					<td>{{ item.column2 }}</td>
-					<td>
-						<button class="btn btn-primary">Edit</button>
-						<button class="btn btn-danger">Delete</button>
+					<td class="object_area"><img class="object-thumbnail" src="{{ asset(item) }}"></td>
+					<td class="action_area">
+						<button class="btn btn-primary">Dodaj</button>
+						<button class="btn btn-danger">Usuń</button>
 					</td>
 				</tr>
 			{% endfor %}
