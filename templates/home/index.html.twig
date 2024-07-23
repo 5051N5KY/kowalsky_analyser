@@ -4,25 +4,36 @@
 {% endblock %}
 
 {% block body %}
-	<table class="table">
-		<thead class="thead-light">
-			<tr>
-				<th scope="col">Obiekt</th>
-				<th scope="col">Akcja</th>
-			</tr>
-		</thead>
-		<tbody>
-			<pre>
-		</pre>
-			{% for item in items %}
-				<tr>
-					<td class="object_area"><img class="object-thumbnail" src="{{ asset(item) }}"></td>
-					<td class="action_area">
-						<button class="btn btn-primary">Dodaj</button>
-						<button class="btn btn-danger">Usuń</button>
-					</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	<div class="container">
+		<div class="content">
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">Obiekt</th>
+						<th scope="col">Akcja</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in items %}
+						<tr>
+							<!-- Miniaturka obrazka -->
+							<td class="object_area">
+								<img class="object-thumbnail" src="{{ asset(item) }}" alt="Obrazek" onclick="openModal(this)">
+							</td>
+
+							<!-- Kontener modalny dla powiększonego obrazka -->
+							<div id="modal" class="modal">
+								<span class="close" onclick="closeModal()">&times;</span>
+								<img class="modal-content" id="modalImage">
+							</div>
+							<td class="action_area">
+								<button class="btn-add-object">Dodaj</button>
+								<button class="btn-delete-object">Usuń</button>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
 {% endblock %}

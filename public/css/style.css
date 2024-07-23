@@ -1,44 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #4a4a4a;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
+    background-color: #6e6e6e !important;
+    color: #e0e0e0 !important;
+    border: none;
+    box-shadow: none;
+    width: 100%;
 }
 
-header nav ul {
-    list-style-type: none;
-    padding: 0;
+header .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
+.content {
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    color: #333;
 }
 
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #f1f1f1;
-    margin-top: 20px;
+    background-color: #5a5a5a;
+    color: #e0e0e0;
+    margin-top: auto;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
 }
 
 table,
 th,
 td {
-    border: 1px solid black;
+    border: 1px solid #4a4a4a;
 }
 
 th,
@@ -47,12 +68,190 @@ td {
     text-align: left;
 }
 
+table thead {
+    background-color: #4a4a4a;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #2a2a2a;
+}
+
 button {
     margin-right: 5px;
 }
 
-.object-thumbnail {
-    max-width: 100px;  /* Maksymalna szerokość obrazka */
-    max-height: 100px; /* Maksymalna wysokość obrazka */
-    object-fit: cover; /* Zachowuje proporcje obrazu */
+.object_area img {
+    display: block;
+    margin: 0 auto;
+}
+
+header,
+footer {
+    border: none;
+    box-shadow: none;
+}
+
+.nav-link {
+    color: #e0e0e0;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.nav-link:hover {
+    background-color: #5a5a5a;
+    border-radius: 5px;
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: #5a5a5a;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.table {
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+}
+
+.table thead {
+    background-color: #4a4a4a !important;
+    color: #e0e0e0 !important;
+}
+
+.table th,
+.table td {
+    border: 1px solid #4a4a4a !important;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #3a3a3a !important;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #2a2a2a !important;
+}
+
+.table .object-thumbnail {
+    max-width: 50px;
+    object-fit: cover;
+}
+
+.table .btn {
+    margin-right: 5px;
+}
+
+.table>:not(caption)>*>* {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    text-align: center;
+}
+
+
+/* Stylizacja komórki z przyciskami */
+.action_area {
+    text-align: center;
+    /* Wyśrodkowanie zawartości w poziomie */
+}
+
+/* Stylizacja przycisków */
+.btn-add-object,
+.btn-delete-object {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+    /* Odstęp między przyciskami */
+}
+
+/* Przyciski dodawania */
+.btn-add-object {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+    box-shadow: 0 0 10px rgba(51, 51, 51, 0.5);
+}
+
+.btn-add-object:hover {
+    background-color: #555555;
+    border-color: #555555;
+    box-shadow: 0 0 15px rgba(85, 85, 85, 0.7);
+}
+
+/* Przyciski usuwania */
+.btn-delete-object {
+    background-color: #666666;
+    color: #ffffff;
+    border-color: #666666;
+    box-shadow: 0 0 10px rgba(102, 102, 102, 0.5);
+}
+
+.btn-delete-object:hover {
+    background-color: #888888;
+    border-color: #888888;
+    box-shadow: 0 0 15px rgba(136, 136, 136, 0.7);
+}
+
+/* Stylizacja modala */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Stylizacja dla powiększonego obrazka */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Stylizacja dla przycisku zamknięcia */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Przy efekcie na przycisk zamknięcia */
+.close:hover,
+.close:focus {
+    color: #f1f1f1;
+    text-decoration: none;
+    cursor: pointer;
 }
