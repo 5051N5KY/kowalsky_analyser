@@ -31,15 +31,15 @@ class Shperacze
     #[ORM\Column]
     private ?bool $active = null;
 
-    /**
-     * @var Collection<int, ScannedObject>
-     */
-    #[ORM\OneToMany(targetEntity: ScannedObject::class, mappedBy: 'shper_id')]
-    private Collection $scannedObjects;
-
     public function __construct()
     {
-        $this->scannedObjects = new ArrayCollection();
+        $this->date_created = new \DateTime();
+    }
+
+    #[ORM\PreUpdate]
+    public function updateDateModified(): void
+    {
+        $this->date_modified = new \DateTime();
     }
 
     public function getId(): ?int
@@ -103,36 +103,6 @@ class Shperacze
     public function setActive(bool $active): static
     {
         $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, ScannedObject>
-     */
-    public function getScannedObjects(): Collection
-    {
-        return $this->scannedObjects;
-    }
-
-    public function addScannedObject(ScannedObject $scannedObject): static
-    {
-        if (!$this->scannedObjects->contains($scannedObject)) {
-            $this->scannedObjects->add($scannedObject);
-            $scannedObject->setShperId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeScannedObject(ScannedObject $scannedObject): static
-    {
-        if ($this->scannedObjects->removeElement($scannedObject)) {
-            // set the owning side to null (unless already changed)
-            if ($scannedObject->getShperId() === $this) {
-                $scannedObject->setShperId(null);
-            }
-        }
 
         return $this;
     }

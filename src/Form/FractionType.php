@@ -12,15 +12,12 @@ class FractionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fraction_name')
-            ->add('fraction_description')
-            ->add('date_created', null, [
-                'widget' => 'single_text',
+            ->add('fraction_name', null, [
+                'label' => 'Nazwa frakcji'
             ])
-            ->add('date_modified', null, [
-                'widget' => 'single_text',
-            ])
-        ;
+            ->add('fraction_description', null, [
+                'label' => 'Opis frakcji'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

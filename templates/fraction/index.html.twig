@@ -1,41 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fraction index{% endblock %}
+{% block title %}Frakcja{% endblock %}
 
 {% block body %}
-    <h1>Fraction index</h1>
+    <h1>Lista frakcji</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Fraction_name</th>
-                <th>Fraction_description</th>
-                <th>Date_created</th>
-                <th>Date_modified</th>
-                <th>actions</th>
+                <th>Nazwa frakcji</th>
+                <th>Opis frakcji</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
         {% for fraction in fractions %}
             <tr>
-                <td>{{ fraction.id }}</td>
                 <td>{{ fraction.fractionName }}</td>
                 <td>{{ fraction.fractionDescription }}</td>
-                <td>{{ fraction.dateCreated ? fraction.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ fraction.dateModified ? fraction.dateModified|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_fraction_show', {'id': fraction.id}) }}">show</a>
-                    <a href="{{ path('app_fraction_edit', {'id': fraction.id}) }}">edit</a>
+                    <a href="{{ path('app_fraction_show', {'id': fraction.id}) }}" class="btn-list btn-add-object">Pokaż</a>
+                    <a href="{{ path('app_fraction_edit', {'id': fraction.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Brak wpisów</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_fraction_new') }}">Create new</a>
+    <a href="{{ path('app_fraction_new') }}">Dodaj</a>
 {% endblock %}

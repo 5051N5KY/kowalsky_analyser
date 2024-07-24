@@ -1,7 +1,9 @@
 twig:
+    form_themes: ['bootstrap_5_horizontal_layout.html.twig']
     default_path: '%kernel.project_dir%/templates'
     globals:
         image_dir: '%kernel.project_dir%/var/storage/'
+
 
 when@test:
     twig:

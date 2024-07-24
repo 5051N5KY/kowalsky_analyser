@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ScannedObjectRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class ScannedObject
 {
     #[ORM\Id]
@@ -42,9 +43,26 @@ class ScannedObject
     #[ORM\ManyToOne]
     private ?Event $event_id = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date_created = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_modified = null;
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Fraction $item_possession_id = null;
+
+    public function __construct()
+    {
+        $this->date_created = new \DateTime();
+    }
+
+    #[ORM\PreUpdate]
+    public function updateDateModified(): void
+    {
+        $this->date_modified = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -167,6 +185,30 @@ class ScannedObject
     public function setItemPossessionId(?Fraction $item_possession_id): static
     {
         $this->item_possession_id = $item_possession_id;
+
+        return $this;
+    }
+
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+        return $this->date_created;
+    }
+
+    public function setDateCreated(\DateTimeInterface $date_created): static
+    {
+        $this->date_created = $date_created;
+
+        return $this;
+    }
+
+    public function getDateModified(): ?\DateTimeInterface
+    {
+        return $this->date_modified;
+    }
+
+    public function setDateModified(?\DateTimeInterface $date_modified): static
+    {
+        $this->date_modified = $date_modified;
 
         return $this;
     }

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Shperacze{% endblock %}
+{% block title %}Shperacze - dodaj
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Shperacze</h1>
+	<h1>Dodaj nowego Shperacza</h1>
 
-    {{ include('shperacze/_form.html.twig') }}
+	{{ include('shperacze/_form.html.twig') }}
 
-    <a href="{{ path('app_shperacze_index') }}">back to list</a>
 {% endblock %}

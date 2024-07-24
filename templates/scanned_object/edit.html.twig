@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ScannedObject{% endblock %}
+{% block title %}Obiekt - edycja{% endblock %}
 
 {% block body %}
-    <h1>Edit ScannedObject</h1>
+    <h1>Edytuj obiekt</h1>
 
     {{ include('scanned_object/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_scanned_object_index') }}">back to list</a>
+    <a href="{{ path('app_scanned_object_index') }}">Powrót do listy</a>
 
     {{ include('scanned_object/_delete_form.html.twig') }}
 {% endblock %}

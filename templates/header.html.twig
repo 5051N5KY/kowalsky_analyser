@@ -15,10 +15,23 @@
 						<a class="nav-link" href="{{ path('app_home') }}">Obiekty</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_home') }}">Baza danych</a>
+						<a class="nav-link" href="{{ path('app_scanned_object_index') }}">Baza danych</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_home') }}">Nie wiem</a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Inne
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li>
+								<a class="dropdown-item" href="{{ path('app_shperacze_index') }}">Shperacze</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_fraction_index') }}">Frakcje</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_event_index') }}">Imprezy</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</div>

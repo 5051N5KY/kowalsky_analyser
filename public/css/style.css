@@ -157,9 +157,10 @@ footer {
     object-fit: cover;
 }
 
-.table .object-thumbnail:hover{
+.table .object-thumbnail:hover {
     box-shadow: 0 0 15px rgba(85, 85, 85, 0.7);
 }
+
 .table .btn {
     margin-right: 5px;
 }
@@ -171,19 +172,16 @@ footer {
 }
 
 
-/* Stylizacja komórki z przyciskami */
 .action_area {
     text-align: center;
-    /* Wyśrodkowanie zawartości w poziomie */
 }
 
-/* Stylizacja przycisków */
 .btn-add-object,
 .btn-delete-object {
     border: 2px solid transparent;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 5px 15px;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
@@ -192,7 +190,6 @@ footer {
     /* Odstęp między przyciskami */
 }
 
-/* Przyciski dodawania */
 .btn-add-object {
     background-color: #333333;
     color: #ffffff;
@@ -206,7 +203,6 @@ footer {
     box-shadow: 0 0 15px rgba(85, 85, 85, 0.7);
 }
 
-/* Przyciski usuwania */
 .btn-delete-object {
     background-color: #666666;
     color: #ffffff;
@@ -220,7 +216,6 @@ footer {
     box-shadow: 0 0 15px rgba(136, 136, 136, 0.7);
 }
 
-/* Stylizacja modala */
 .modal {
     display: none;
     position: fixed;
@@ -233,7 +228,6 @@ footer {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Stylizacja dla powiększonego obrazka */
 .modal-content {
     margin: auto;
     display: block;
@@ -241,7 +235,6 @@ footer {
     max-width: 700px;
 }
 
-/* Stylizacja dla przycisku zamknięcia */
 .close {
     position: absolute;
     top: 15px;
@@ -252,7 +245,6 @@ footer {
     cursor: pointer;
 }
 
-/* Przy efekcie na przycisk zamknięcia */
 .close:hover,
 .close:focus {
     color: #f1f1f1;

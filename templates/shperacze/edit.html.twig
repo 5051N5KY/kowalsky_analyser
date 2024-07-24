@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Shperacze{% endblock %}
+{% block title %}Shperacze - edycja{% endblock %}
 
 {% block body %}
-    <h1>Edit Shperacze</h1>
+    <h1>Edytuj Shperacza</h1>
 
     {{ include('shperacze/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_shperacze_index') }}">back to list</a>
+    <a href="{{ path('app_shperacze_index') }}">Powrót do listy</a>
 
     {{ include('shperacze/_delete_form.html.twig') }}
 {% endblock %}

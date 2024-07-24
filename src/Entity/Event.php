@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Event
 {
     #[ORM\Id]
@@ -25,6 +26,17 @@ class Event
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_modified = null;
+
+    public function __construct()
+    {
+        $this->date_created = new \DateTime();
+    }
+
+    #[ORM\PreUpdate]
+    public function updateDateModified(): void
+    {
+        $this->date_modified = new \DateTime();
+    }
 
     public function getId(): ?int
     {

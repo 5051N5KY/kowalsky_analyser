@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ScannedObject{% endblock %}
+{% block title %}Obiekt - dodaj{% endblock %}
 
 {% block body %}
-    <h1>Create new ScannedObject</h1>
+    <h1>Dodaj nowy obiekt</h1>
 
     {{ include('scanned_object/_form.html.twig') }}
-
-    <a href="{{ path('app_scanned_object_index') }}">back to list</a>
 {% endblock %}
