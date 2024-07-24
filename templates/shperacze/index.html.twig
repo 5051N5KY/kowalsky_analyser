@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shperacze index{% endblock %}
+
+{% block body %}
+    <h1>Shperacze index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nickname</th>
+                <th>Shper_number</th>
+                <th>Date_created</th>
+                <th>Date_modified</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shperacze in shperaczes %}
+            <tr>
+                <td>{{ shperacze.id }}</td>
+                <td>{{ shperacze.nickname }}</td>
+                <td>{{ shperacze.shperNumber }}</td>
+                <td>{{ shperacze.dateCreated ? shperacze.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ shperacze.dateModified ? shperacze.dateModified|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ shperacze.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_shperacze_show', {'id': shperacze.id}) }}">show</a>
+                    <a href="{{ path('app_shperacze_edit', {'id': shperacze.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_shperacze_new') }}">Create new</a>
+{% endblock %}

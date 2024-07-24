@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ScannedObject index{% endblock %}
+
+{% block body %}
+    <h1>ScannedObject index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo_path</th>
+                <th>Pdf_path</th>
+                <th>Name</th>
+                <th>General_description</th>
+                <th>Background_description</th>
+                <th>Analysis_result</th>
+                <th>Who_brought_object_name_id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for scanned_object in scanned_objects %}
+            <tr>
+                <td>{{ scanned_object.id }}</td>
+                <td>{{ scanned_object.photoPath }}</td>
+                <td>{{ scanned_object.pdfPath }}</td>
+                <td>{{ scanned_object.name }}</td>
+                <td>{{ scanned_object.generalDescription }}</td>
+                <td>{{ scanned_object.backgroundDescription }}</td>
+                <td>{{ scanned_object.analysisResult }}</td>
+                <td>{{ scanned_object.whoBroughtObjectNameId }}</td>
+                <td>
+                    <a href="{{ path('app_scanned_object_show', {'id': scanned_object.id}) }}">show</a>
+                    <a href="{{ path('app_scanned_object_edit', {'id': scanned_object.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_scanned_object_new') }}">Create new</a>
+{% endblock %}

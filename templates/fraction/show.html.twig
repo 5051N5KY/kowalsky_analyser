@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fraction{% endblock %}
+
+{% block body %}
+    <h1>Fraction</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fraction.id }}</td>
+            </tr>
+            <tr>
+                <th>Fraction_name</th>
+                <td>{{ fraction.fractionName }}</td>
+            </tr>
+            <tr>
+                <th>Fraction_description</th>
+                <td>{{ fraction.fractionDescription }}</td>
+            </tr>
+            <tr>
+                <th>Date_created</th>
+                <td>{{ fraction.dateCreated ? fraction.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_modified</th>
+                <td>{{ fraction.dateModified ? fraction.dateModified|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fraction_index') }}">back to list</a>
+
+    <a href="{{ path('app_fraction_edit', {'id': fraction.id}) }}">edit</a>
+
+    {{ include('fraction/_delete_form.html.twig') }}
+{% endblock %}

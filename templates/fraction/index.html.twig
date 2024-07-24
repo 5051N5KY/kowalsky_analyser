@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fraction index{% endblock %}
+
+{% block body %}
+    <h1>Fraction index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fraction_name</th>
+                <th>Fraction_description</th>
+                <th>Date_created</th>
+                <th>Date_modified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fraction in fractions %}
+            <tr>
+                <td>{{ fraction.id }}</td>
+                <td>{{ fraction.fractionName }}</td>
+                <td>{{ fraction.fractionDescription }}</td>
+                <td>{{ fraction.dateCreated ? fraction.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ fraction.dateModified ? fraction.dateModified|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_fraction_show', {'id': fraction.id}) }}">show</a>
+                    <a href="{{ path('app_fraction_edit', {'id': fraction.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fraction_new') }}">Create new</a>
+{% endblock %}

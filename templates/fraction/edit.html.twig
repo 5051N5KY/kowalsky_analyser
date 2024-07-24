@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Fraction{% endblock %}
+
+{% block body %}
+    <h1>Edit Fraction</h1>
+
+    {{ include('fraction/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_fraction_index') }}">back to list</a>
+
+    {{ include('fraction/_delete_form.html.twig') }}
+{% endblock %}
