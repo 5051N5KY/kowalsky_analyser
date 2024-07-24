@@ -21,8 +21,8 @@
                 <td>{{ shperacze.shperNumber }}</td>
                 <td>{{ shperacze.active ? 'Tak' : 'Nie' }}</td>
                 <td>
-                    <a href="{{ path('app_shperacze_show', {'id': shperacze.id}) }}">Pokaż</a>
-                    <a href="{{ path('app_shperacze_edit', {'id': shperacze.id}) }}">Edytuj</a>
+                    <a href="{{ path('app_shperacze_show', {'id': shperacze.id}) }}" class="btn-list btn-add-object">Pokaż</a>
+                    <a href="{{ path('app_shperacze_edit', {'id': shperacze.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_shperacze_new') }}">Dodaj</a>
+    <a href="{{ path('app_shperacze_new') }}" class="btn-add-object">Dodaj</a>
 {% endblock %}

@@ -1,33 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Baza danych{% endblock %}
+{% block title %}Baza danych
+{% endblock %}
 
 {% block body %}
-    <h1>Lista obiektów</h1>
+	<h1>Lista obiektów</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for scanned_object in scanned_objects %}
-            <tr>
-                <td>{{ scanned_object.name }}</td>
-                <td>
-                    <a href="{{ path('app_scanned_object_show', {'id': scanned_object.id}) }}">Pokaż</a>
-                    <a href="{{ path('app_scanned_object_edit', {'id': scanned_object.id}) }}">Edytuj</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">Brak wpisów</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Zdjęcie</th>
+				<th>Nazwa</th>
+				<th>Akcje</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for scanned_object in scanned_objects %}
+				<tr>
+					<td>
+						<div class="object-photo-container">
+							<img class="object-photo" src="{{ asset(scanned_object.photoPath) }}" alt="Obrazek" onclick="openModal(this)"/>
+						</div>
 
-    <a href="{{ path('app_scanned_object_new') }}">Dodaj</a>
+						<div id="modal" class="modal">
+							<span class="close" onclick="closeModal()">&times;</span>
+							<img class="modal-content" id="modalImage">
+						</div>
+					</td>
+					<td>{{ scanned_object.name }}</td>
+					<td>
+						<a href="{{ path('app_scanned_object_show', {'id': scanned_object.id}) }}" class="btn-list btn-add-object">Pokaż</a>
+						<a href="{{ path('app_scanned_object_generate', {'id': scanned_object.id}) }}" class="btn-list btn-add-object" target="_blank">Generuj PDF</a>
+						<a href="{{ path('app_scanned_object_edit', {'id': scanned_object.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">Brak wpisów</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_scanned_object_new') }}" class="btn-add-object">Dodaj</a>
 {% endblock %}

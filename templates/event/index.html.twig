@@ -19,8 +19,8 @@
                 <td>{{ event.eventName }}</td>
                 <td>{{ event.eventDate }}</td>
                 <td>
-                    <a href="{{ path('app_event_show', {'id': event.id}) }}">Pokaż</a>
-                    <a href="{{ path('app_event_edit', {'id': event.id}) }}">Edytuj</a>
+                    <a href="{{ path('app_event_show', {'id': event.id}) }}" class="btn-list btn-add-object">Pokaż</a>
+                    <a href="{{ path('app_event_edit', {'id': event.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_event_new') }}">Dodaj</a>
+    <a href="{{ path('app_event_new') }}" class="btn-add-object">Dodaj</a>
 {% endblock %}

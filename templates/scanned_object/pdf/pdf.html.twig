@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				color: #000;
+			}
+			.header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-bottom: 1px solid #000;
+				background-color: #ccc;
+			}
+			.details {
+				text-align: left;
+				padding-left: 10px;
+			}
+			.content {
+				padding: 10px;
+			}
+			.content .section {
+				margin-bottom: 20px;
+			}
+			.section-title {
+				font-weight: bold;
+				font-size: 14px;
+				margin-bottom: 5px;
+			}
+			.section-content {
+				font-size: 12px;
+				text-align: justify;
+			}
+		</style>
+	</head>
+	<body>
+		Family font. It can be either a name defined by AddFont() or one of the standard Type1 families (case insensitive):<ul>
+			<li>times (Times-Roman)</li>
+			<li>timesb (Times-Bold)</li>
+			<li>timesi (Times-Italic)</li>
+			<li>timesbi (Times-BoldItalic)</li>
+			<li>helvetica (Helvetica)</li>
+			<li>helveticab (Helvetica-Bold)</li>
+			<li>helveticai (Helvetica-Oblique)</li>
+			<li>helveticabi (Helvetica-BoldOblique)</li>
+			<li>courier (Courier)</li>
+			<li>courierb (Courier-Bold)</li>
+			<li>courieri (Courier-Oblique)</li>
+			<li>courierbi (Courier-BoldOblique)</li>
+			<li>symbol (Symbol)</li>
+			<li>zapfdingbats (ZapfDingbats)</li>
+		</ul>
+		It is also possible to pass an empty string. In that case, the current family is retained.
+		<div class="header">
+			<table>
+				<tr>
+					<td style="width:40%">
+						<img src="{{ photob64 }}" alt="Photo" style="height: 200px; width: 200px;">
+					</td>
+					<td>
+						<div class="details">
+							<div style="font-weight: bold; font-size: 16px;">
+								<b>Nazwa:</b>
+								{{scannedObject.getName()}}</div>
+							<div style="font-size: 12px;">
+								<b>Data:</b>
+								{{ scannedObject.getDateCreated() ? scannedObject.dateCreated|date('Y-m-d H:i:s') : ''  }}</div>
+							<div style="font-size: 12px;">
+								<b>Dodane przez:</b>
+								{{ scannedObject.getShperId().getNickname() }}</div>
+							<div style="font-size: 12px;">
+								<b>Przyniósł:</b>
+								{{ scannedObject.getWhoBroughtObjectNameId() }}</div>
+							<div style="font-size: 12px;">
+								<b>Lokalizacja:</b>
+								{{ scannedObject.getItemPossessionId().getFractionName() }}</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<div class="content">
+			<div class="section">
+				<div class="section-title">Opis ogólny</div>
+				<div class="section-content">
+					{{ scannedObject.getGeneralDescription()}}
+				</div>
+			</div>
+			<div class="section">
+				<div class="section-title">Opis tła</div>
+				<div class="section-content">
+					{{ scannedObject.getBackgroundDescription()}}
+
+				</div>
+			</div>
+			<div class="section">
+				<div class="section-title">Wynik analizy</div>
+				<div class="section-content">
+					{{ scannedObject.getAnalysisResult()}}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,50 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ScannedObject{% endblock %}
+{% block title %}ScannedObject
+{% endblock %}
 
 {% block body %}
-    <h1>ScannedObject</h1>
+	<h1>Obiekt</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ scanned_object.id }}</td>
-            </tr>
-            <tr>
-                <th>Photo_path</th>
-                <td>{{ scanned_object.photoPath }}</td>
-            </tr>
-            <tr>
-                <th>Pdf_path</th>
-                <td>{{ scanned_object.pdfPath }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ scanned_object.name }}</td>
-            </tr>
-            <tr>
-                <th>General_description</th>
-                <td>{{ scanned_object.generalDescription }}</td>
-            </tr>
-            <tr>
-                <th>Background_description</th>
-                <td>{{ scanned_object.backgroundDescription }}</td>
-            </tr>
-            <tr>
-                <th>Analysis_result</th>
-                <td>{{ scanned_object.analysisResult }}</td>
-            </tr>
-            <tr>
-                <th>Who_brought_object_name_id</th>
-                <td>{{ scanned_object.whoBroughtObjectNameId }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>ID</th>
+				<td>{{ scanned_object.id }}</td>
+			</tr>
+			<tr>
+				<th>Ścieżka do obrazka / podgląd</th>
+				<td>
+					<div class="object-photo-container">
+						<img class="object-photo" src="{{ asset(scanned_object.photoPath) }}" alt="Obrazek" onclick="openModal(this)"/>
+					</div>
 
-    <a href="{{ path('app_scanned_object_index') }}">back to list</a>
+					<div id="modal" class="modal">
+						<span class="close" onclick="closeModal()">&times;</span>
+						<img class="modal-content" id="modalImage">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>Ścieżka do PDF</th>
+				<td>{{ scanned_object.pdfPath }}</td>
+			</tr>
+			<tr>
+				<th>Nazwa</th>
+				<td>{{ scanned_object.name }}</td>
+			</tr>
+			<tr>
+				<th>Opis główny</th>
+				<td>{{ scanned_object.generalDescription }}</td>
+			</tr>
+			<tr>
+				<th>Opis tła</th>
+				<td>{{ scanned_object.backgroundDescription }}</td>
+			</tr>
+			<tr>
+				<th>Wynik analizy</th>
+				<td>{{ scanned_object.analysisResult }}</td>
+			</tr>
+			<tr>
+				<th>Kto przyniósł</th>
+				<td>{{ scanned_object.whoBroughtObjectNameId }}</td>
+			</tr>
+			<tr>
+				<th>Kto wprowadził</th>
+				<td>{{ scanned_object.getShperId() ? scanned_object.getShperId().getNickname() : 'b/d' }}</td>
+			</tr>
+			<tr>
+				<th>Impreza</th>
+				<td>{{ scanned_object.getEventId() ? scanned_object.getEventId().getEventName() : 'b/d' }}</td>
+			</tr>
+			<tr>
+				<th>Gdzie znajduje się przedmiot</th>
+				<td>{{ scanned_object.getItemPossessionId() ? scanned_object.getItemPossessionId().getFractionName() : 'b/d'  }}</td>
+			</tr>
+			<tr>
+				<th>Data stworzenia</th>
+				<td>{{ scanned_object.dateCreated ? scanned_object.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Data modyfikacji</th>
+				<td>{{ scanned_object.dateModified ? scanned_object.dateModified|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
 
-    <a href="{{ path('app_scanned_object_edit', {'id': scanned_object.id}) }}">Edytuj</a>
+		</tbody>
+	</table>
 
-    {{ include('scanned_object/_delete_form.html.twig') }}
+	<a href="{{ path('app_scanned_object_index') }}" class="btn-list btn-add-object">Powrót</a>
+
+	<a href="{{ path('app_scanned_object_edit', {'id': scanned_object.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
+
+	{{ include('scanned_object/_delete_form.html.twig') }}
 {% endblock %}

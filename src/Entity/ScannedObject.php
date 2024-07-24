@@ -28,7 +28,7 @@ class ScannedObject
     #[ORM\JoinColumn(nullable: false)]
     private ?Shperacze $shper_id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $general_description = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

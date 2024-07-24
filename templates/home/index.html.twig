@@ -27,8 +27,13 @@
 								<img class="modal-content" id="modalImage">
 							</div>
 							<td class="action_area">
-								<button class="btn-add-object">Dodaj</button>
-								<button class="btn-delete-object" onclick="deleteFile('{{ item }}')">Usuń</button>
+								<form action="{{ path('app_scanned_object_new') }}" method="post">
+									<input type="hidden" name="photo_path" value="{{ asset(item) }}">
+									<button type="submit" class="btn-add-object">Dodaj</button>
+									<a onclick="deleteFile('{{ item }}')" class="btn-list btn-delete-object">Edytuj</a>
+								</form>
+
+
 							</td>
 						</tr>
 					{% endfor %}

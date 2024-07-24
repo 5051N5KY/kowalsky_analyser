@@ -8,35 +8,35 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <td>{{ shperacze.id }}</td>
             </tr>
             <tr>
-                <th>Nickname</th>
+                <th>Ksywa</th>
                 <td>{{ shperacze.nickname }}</td>
             </tr>
             <tr>
-                <th>Shper_number</th>
+                <th>Numer</th>
                 <td>{{ shperacze.shperNumber }}</td>
             </tr>
             <tr>
-                <th>Date_created</th>
+                <th>Data stworzenia</th>
                 <td>{{ shperacze.dateCreated ? shperacze.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Date_modified</th>
+                <th>Data modyfikacji</th>
                 <td>{{ shperacze.dateModified ? shperacze.dateModified|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Active</th>
-                <td>{{ shperacze.active ? 'Yes' : 'No' }}</td>
+                <th>Aktywny</th>
+                <td>{{ shperacze.active ? 'Tak' : 'Nie' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_shperacze_index') }}">back to list</a>
+    <a href="{{ path('app_shperacze_index') }}" class="btn-list btn-add-object">Powrót</a>
 
-    <a href="{{ path('app_shperacze_edit', {'id': shperacze.id}) }}">Edytuj</a>
+    <a href="{{ path('app_shperacze_edit', {'id': shperacze.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
 
     {{ include('shperacze/_delete_form.html.twig') }}
 {% endblock %}

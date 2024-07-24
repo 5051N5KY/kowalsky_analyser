@@ -1,5 +1,16 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn-add-object">{{ button_label|default('Zapisz') }}</button>
-    <a href="{{ path('app_scanned_object_index') }}" class="btn-delete-object">Powrót</a>
+
+<div class="object-photo-container">
+	<img class="object-photo" src="{{ asset(scanned_object.photoPath) }}" alt="Obrazek" onclick="openModal(this)"/>
+</div>
+
+<div id="modal" class="modal">
+	<span class="close" onclick="closeModal()">&times;</span>
+	<img class="modal-content" id="modalImage">
+</div>
+
+{{ form_widget(form) }}
+ <input type="hidden" name="photo_path" value="{{ scanned_object.photoPath }}">
+<button class="btn-add-object">{{ button_label|default('Zapisz') }}</button>
+<a href="{{ path('app_scanned_object_index') }}" class="btn-delete-object">Powrót</a>
 {{ form_end(form) }}

@@ -151,14 +151,29 @@ footer {
     background-color: #2a2a2a !important;
 }
 
-.table .object-thumbnail {
+.object-thumbnail {
     max-width: 50px;
     max-height: 50px;
     object-fit: cover;
 }
 
-.table .object-thumbnail:hover {
+.object-thumbnail:hover {
     box-shadow: 0 0 15px rgba(85, 85, 85, 0.7);
+}
+
+.object-photo {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.object-photo:hover {
+    box-shadow: 0 0 15px rgba(85, 85, 85, 0.7);
+}
+
+.object-photo-container {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .table .btn {
@@ -187,7 +202,6 @@ footer {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0 5px;
-    /* Odstęp między przyciskami */
 }
 
 .btn-add-object {
@@ -250,4 +264,8 @@ footer {
     color: #f1f1f1;
     text-decoration: none;
     cursor: pointer;
+}
+
+.delete_form {
+    text-align: right;
 }
