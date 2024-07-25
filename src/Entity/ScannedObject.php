@@ -53,6 +53,9 @@ class ScannedObject
     #[ORM\JoinColumn(nullable: false)]
     private ?Fraction $item_possession_id = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $logs = null;
+
     public function __construct()
     {
         $this->date_created = new \DateTime();
@@ -211,5 +214,26 @@ class ScannedObject
         $this->date_modified = $date_modified;
 
         return $this;
+    }
+
+    public function getLogs(): ?array
+    {
+        return $this->logs;
+    }
+
+    public function setLogs(?array $logs): static
+    {
+        $this->logs = $logs;
+
+        return $this;
+    }
+
+    public function addLog(string $text, string $nickname): void
+    {
+        $this->logs[] = [
+            'text' => $text, 
+            'nickname' => $nickname, 
+            'date' => (new \DateTime())->format('Y-m-d H:i:s')
+        ];
     }
 }

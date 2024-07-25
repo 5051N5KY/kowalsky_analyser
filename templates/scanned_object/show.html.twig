@@ -69,6 +69,16 @@
 				<th>Data modyfikacji</th>
 				<td>{{ scanned_object.dateModified ? scanned_object.dateModified|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
+			<tr>
+				<th>Zdarzenia</th>
+				<td>
+				{% if scanned_object.getLogs() %}
+					{% for log in scanned_object.getLogs() %}
+						{{log.date}} - {{log.nickname}}: {{log.text}} <br/>
+					{% endfor %}
+				{% endif %}
+				</td>
+			</tr>
 
 		</tbody>
 	</table>
@@ -76,6 +86,8 @@
 	<a href="{{ path('app_scanned_object_index') }}" class="btn-list btn-add-object">Powrót</a>
 
 	<a href="{{ path('app_scanned_object_edit', {'id': scanned_object.id}) }}" class="btn-list btn-delete-object">Edytuj</a>
+
+    <a href="{{ path('app_scanned_object_add_log', {'id': scanned_object.id}) }}"  class="btn-list btn-delete-object">Dodaj zdarzenie</a>
 
 	{{ include('scanned_object/_delete_form.html.twig') }}
 {% endblock %}

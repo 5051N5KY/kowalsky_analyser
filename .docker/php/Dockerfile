@@ -15,6 +15,14 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash
 RUN apt-get install nodejs -y
 RUN node -v && npm -v
 
+# Install imagick
+RUN apt-get update && apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update; \
+    apt-get install -y libmagickwand-dev; \
+    pecl install imagick; \
+    docker-php-ext-enable imagick;
+
 # Remove APT cache
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
